@@ -1,8 +1,5 @@
-from sys import argv
+import json
 
-# script, email = argv
-script = argv[0]
-email = argv[1]
-
-print("The script is called:", script)
-print("Your first variable is:", email)
+with open('email-data-live.json') as json_file:
+    data = json.load(json_file)
+    print(data)

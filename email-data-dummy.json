@@ -1,0 +1,9 @@
+{"sender": {"name": "fred", "email": "fred@test.com"},
+ "to": [
+        {"email": "john.smith@test.com", "name": "john smith"},
+        {"email": "fred.smith@test.com", "name": "fred smith"},
+       ],
+  "htmlContent": "<h2>Test Email</h2><p>test email</p>",
+  "subject": "test email",
+  "replyTo": {"email": "fred@test.com"},
+ "tags": ["test", "try"]}
