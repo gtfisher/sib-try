@@ -1,0 +1,31 @@
+import datetime
+
+def hour_In_Range(lower,upper):
+    """Responds to any HTTP request.
+    Args:
+        request (flask.Request): HTTP request object.
+    Returns:
+        The response text or any set of values that can be turned into a
+        Response object using
+        `make_response <http://flask.pocoo.org/docs/1.0/api/#flask.Flask.make_response>`.
+    """
+    if datetime.datetime.now().hour in range(lower,upper):
+        return '{ "status": "ok"}'
+    return '{ "status": "ko"}'
+
+def hourInRange(request):
+    """Responds to any HTTP request.
+    Args:
+        request (flask.Request): HTTP request object.
+    Returns:
+        The response text or any set of values that can be turned into a
+        Response object using
+        `make_response <http://flask.pocoo.org/docs/1.0/api/#flask.Flask.make_response>`.
+    """
+    if request.args and 'lower' in request.args:
+        lower=int(request.args.get('lower'))
+        if 'upper' in request.args:
+            upper=int(request.args.get('upper'))
+            return hour_In_Range(lower,upper)
+        
+    return '{ "status": "ko"}'
