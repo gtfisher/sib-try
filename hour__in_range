@@ -1,12 +1,18 @@
 import datetime
+from flask import jsonify
 
 def hour_In_Range(lower,upper):
-    """
-        checks to see if hour is in the bounds of lower & upper
+    """Responds to any HTTP request.
+    Args:
+        request (flask.Request): HTTP request object.
+    Returns:
+        The response text or any set of values that can be turned into a
+        Response object using
+        `make_response <http://flask.pocoo.org/docs/1.0/api/#flask.Flask.make_response>`.
     """
     if datetime.datetime.now().hour in range(lower,upper):
-        return '{ "status": "ok"}'
-    return '{ "status": "ko"}'
+        return jsonify(status='ok')
+    return jsonify(status='ko')
 
 def hourInRange(request):
     """Responds to any HTTP request.
@@ -23,4 +29,4 @@ def hourInRange(request):
             upper=int(request.args.get('upper'))
             return hour_In_Range(lower,upper)
         
-    return '{ "status": "ko"}'
+    return   jsonify(status='ko')
